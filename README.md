@@ -163,11 +163,11 @@ Mario/
 
 | Title Screen | Main Menu |
 |---|---|
-| ![Title](Screenshots/Title_Screen.PNG) | ![Menu](Screenshots/Main_Menu.png) |
+| ![Title](Mario/Screenshots/Title_Screen.PNG) | ![Menu](Mario/Screenshots/Main_Menu.png) |
 
 | Level 1 Gameplay | Level 2 Gameplay |
 |---|---|
-| ![Lvl1](Screenshots/Gameplay_lvl1.png) | ![Lvl2](Screenshots/Gameplay_lvl2.png) |
+| ![Lvl1](Mario/Screenshots/Gameplay_lvl1.png) | ![Lvl2](Mario/Screenshots/Gameplay_lvl2.png) |
 
 ---
 
