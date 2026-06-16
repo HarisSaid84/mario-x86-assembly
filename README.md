@@ -1,140 +1,181 @@
-​Haris Said - 24I0527
+# 🍄 Super Mario — x86 Assembly
 
-This README summarizes the structure and features of the game.
+> A fully functional **Super Mario clone** built entirely in **x86 Assembly Language**, featuring 2 levels, a boss fight, enemies, power-ups, sound effects, and a complete HUD — all in pure low-level code.
 
-1.Controls
-A – Move left
-D – Move right
-W – Jump
-Shift - Shoot fireball (Level 1 only).​
-P – Pause game​
-X – Exit game immediately​
+---
 
-​2.Displays:
-TITLE SCREEN
+## 🎮 Controls
 
-MAIN MENU
--start game
--instructions
--high score
--exit​
+| Key | Action |
+|-----|--------|
+| `A` | Move Left |
+| `D` | Move Right |
+| `W` | Jump |
+| `Shift` | Shoot Fireball *(Level 1 only)* |
+| `P` | Pause Game |
+| `X` | Exit Game |
 
-PAUSE MENU
-GAME OVER
-LEVEL COMPLETE
+---
 
-3.Gameplay
+## 🖥️ Screens
 
-Level 1: Grassland Adventure (Level 1)
-Level 2: CastleFortress (Level 2)
+- 🏁 **Title Screen**
+- 📋 **Main Menu** — Start Game / Instructions / High Score / Exit
+- ⏸️ **Pause Menu**
+- 💀 **Game Over**
+- ✅ **Level Complete**
 
-4.HUD (Heads-Up Display)​
+---
 
-MARIO – Label for score.
-Score – Increases from coins, enemies, blocks, and bonuses.
-WORLD – Shows world/level numbers (e.g., 1-1, 1-2).
-TIME – Countdown timer in seconds.
-x with Lives count – Remaining lives.
-​
-5.Realistic Featues:
-Gravity
-Motion
-Jumping 
-collision detection
-smooth motion
+## 🌍 Levels
 
-6.Level System and Tiles
-The game uses a tile-based level map stored in levelMap with width 120 and height 30.​
+### Level 1 — Grassland Adventure 🌿
+> Classic overworld with ground, pipes, bricks, clouds, coins, and enemies.  
+> **Win condition:** Reach the flag with at least **1500 points**  
+> **Bonus:** Remaining time × 50 added to score
 
-Tile Types
-TILE_EMPTY – Background.
-TILE_GROUND – Ground blocks (Grassland Adventure).
-TILE_BRICK – Solid bricks.
-TILE_QUESTION – Question blocks with power-ups/points.​
-TILE_COIN – Collectible coins.
-TILE_CLOUD – Decorative clouds.
-TILE_FLAGPOLE – End of Level 1 goal.
-TILE_GROUND_UNDERGROUND – Castle fortress ground.
-TILE_LAVA – Deadly lava (instant life loss).
-TILE_AXE – Axe behind Bowser to end the boss level.
-TILE_CLOCK – Time slow power-up.​
+### Level 2 — Castle Fortress 🏰
+> Lava floors, gray bricks, stalactites, and the final Bowser boss battle.  
+> **Win condition:** Reach the blue axe tile to defeat Bowser
 
-7.Enemies and Boss
+---
 
-4 Goombas (Level 1) (Represented as G)
-They walk back and forth, turn around at edges or on collision, and respect gravity through ground checks.​
-Player can defeat Goombas by jumping on them or htting them with fireball.​
+## 🧱 Tile System
 
-Koopa Troopa (Level 1) (Represented as K)
-Has walking state and direction; uses collision and ground checks similar to Goombas.​
-It turns into a shell if mario jumps on it.
+The game uses a **tile-based level map** (120 × 30 tiles):
 
-Bowser Boss (Level 2)
+| Tile | Description |
+|------|-------------|
+| `TILE_EMPTY` | Background |
+| `TILE_GROUND` | Grassland ground blocks |
+| `TILE_BRICK` | Solid bricks |
+| `TILE_QUESTION` | Question blocks with power-ups |
+| `TILE_COIN` | Collectible coins |
+| `TILE_CLOUD` | Decorative clouds |
+| `TILE_FLAGPOLE` | End of Level 1 goal |
+| `TILE_GROUND_UNDERGROUND` | Castle fortress ground |
+| `TILE_LAVA` | Deadly lava — instant life loss |
+| `TILE_AXE` | Defeat Bowser in Level 2 |
+| `TILE_CLOCK` | ⭐ Custom power-up (time slow) |
 
-Bowser patrols a platform ​
-Fires periodic fireballs using a separate fireball system.​
+---
 
-8.Collectibles and Power-Ups
+## 👾 Enemies & Boss
 
-Coins (Represented as O)
-Score increases (+200).
+### 🍄 Goombas × 4 *(Level 1)*
+- Walk back and forth, respect gravity, turn at edges
+- Defeated by **jumping on them** or **hitting with fireball**
 
-Question Blocks (Represented as ?)
-Player gets score bonus (+100).
-​
-Own Creative Feature (Represented as C)
-​
-For 5seconds:
-timer slows down
-enemies move 2x slower
-Score bonus (+500) is awarded
+### 🐢 Koopa Troopa *(Level 1)*
+- Walks and turns like Goombas
+- Turns into a **shell** when Mario jumps on it
 
-9.Fireball Systems
+### 🔥 Bowser *(Level 2 Boss)*
+- Patrols a platform
+- Fires periodic fireballs at Mario
 
-Bowser Fireballs can kill mario
-Mario’s Fireballs can kill enemies​
+---
 
-10.Level Progression and Win Conditions
+## 💰 Collectibles & Power-Ups
 
-Level 1 (Grassland Adventure)
+| Item | Symbol | Reward |
+|------|--------|--------|
+| Coin | `O` | +200 points |
+| Question Block | `?` | +100 points |
+| ⭐ Clock *(Custom Feature)* | `C` | +500 pts · enemies 2× slower · timer slows · lasts 5 sec |
 
-Typical ground, pipes, bricks, clouds, coins, and enemies.
-Win condition: reach flag and have at least a target score (1500).
+---
 
-On success: time in seconds is multiplied with 50 and added to score
+## 🔥 Fireball System
 
-Level 2 (Castle Fortress)
+- **Mario's fireballs** → kill enemies (blue fireballs — *Fire Master Mario* theme)
+- **Bowser's fireballs** → kill Mario
 
-Lava at bottom, gray bricks, stalactites, Bowser on a platform.​
-Win condition: reach the blue axe tile to defeat bowser
+---
 
-11.Lives start at 3
-lava or enemy collisions decrement lives and reset position
-​
-12.Sound Effects:
-Mario jumping
-collecting coins
-collecting question blocks
-jumping on enemies
-falling into lava
+## 📊 HUD
 
-13.File Handling 
+| Element | Description |
+|---------|-------------|
+| `MARIO` | Score label |
+| `Score` | Increases from coins, enemies, blocks & bonuses |
+| `WORLD` | Current level (e.g. 1-1, 1-2) |
+| `TIME` | Countdown timer |
+| `× Lives` | Remaining lives |
 
-Store data per entry includes:
+---
 
-Player name (entered at start).
-Score
-Level at which player finished
-Lives
+## ⚙️ Physics & Engine
 
-14.Customization and Roll Number Features
+- ✅ Gravity system
+- ✅ Smooth motion
+- ✅ Jump mechanics
+- ✅ Collision detection (tiles + enemies)
 
-“Fire Master Mario” theme for roll ending in 7.​ (24I0527)
+---
 
-Implemented custom features:​
-Mario fireball shooting blue fireballs
+## 🔊 Sound Effects
 
-HAPPY GAMING!
+- Mario jumping
+- Collecting coins
+- Hitting question blocks
+- Stomping enemies
+- Falling into lava
 
-COAL - Fall 2025
-Instructor - Usama Imran
+---
+
+## 💾 File Handling (High Scores)
+
+Each saved entry stores:
+- Player name
+- Score
+- Level reached
+- Lives remaining
+
+---
+
+## 🎨 Custom Roll Number Feature
+
+> **Roll ending in 7 → "Fire Master Mario" theme** *(24I-0527)*  
+> Mario shoots **blue fireballs** instead of the standard orange
+
+---
+
+## 📁 Project Structure
+
+```
+Mario/
+├── 24I0527_mario.asm     # Full game source (x86 Assembly)
+├── mariomusic.wav        # Background music
+├── GameDemo.MOV          # Gameplay demo video
+├── README.md
+└── Screenshots/
+    ├── Title_Screen.PNG
+    ├── Main_Menu.png
+    ├── Gameplay_lvl1.png
+    ├── Gameplay_lvl2.png
+    └── Level_Complete.png
+```
+
+---
+
+## 📸 Screenshots
+
+| Title Screen | Main Menu |
+|---|---|
+| ![Title](Screenshots/Title_Screen.PNG) | ![Menu](Screenshots/Main_Menu.png) |
+
+| Level 1 Gameplay | Level 2 Gameplay |
+|---|---|
+| ![Lvl1](Screenshots/Gameplay_lvl1.png) | ![Lvl2](Screenshots/Gameplay_lvl2.png) |
+
+---
+
+## 👨‍💻 Author
+
+**Haris Said** — `24I-0527`  
+COAL — Fall 2025 · Instructor: Usama Imran · FAST-NUCES
+
+---
+
+*HAPPY GAMING! 🎮*
